@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SQLInfoAXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SQLInfo.dbo.AxMonthlyData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AxMonthlyData">
+          <Key>
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="Year" />
+          </Key>
+          <Property Name="PurchCount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="NetAmountInUSD" Type="money" />
+          <Property Name="AssetCount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AssetValuationCount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="BreakfixCount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="RMACount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="Day" Type="int" Nullable="false" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SQLInfoAXModelStoreContainer">
+          <EntitySet Name="AxMonthlyData" EntityType="Self.AxMonthlyData" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AxMonthlyData].[PurchCount] AS [PurchCount], 
+    [AxMonthlyData].[NetAmountInUSD] AS [NetAmountInUSD], 
+    [AxMonthlyData].[AssetCount] AS [AssetCount], 
+    [AxMonthlyData].[AssetValuationCount] AS [AssetValuationCount], 
+    [AxMonthlyData].[BreakfixCount] AS [BreakfixCount], 
+    [AxMonthlyData].[RMACount] AS [RMACount], 
+    [AxMonthlyData].[CreatedDate] AS [CreatedDate], 
+    [AxMonthlyData].[Day] AS [Day], 
+    [AxMonthlyData].[Month] AS [Month], 
+    [AxMonthlyData].[Year] AS [Year]
+    FROM [dbo].[AxMonthlyData] AS [AxMonthlyData]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SQLInfoAXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AxMonthlyData">
+          <Key>
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="Year" />
+          </Key>
+          <Property Name="PurchCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NetAmountInUSD" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AssetCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AssetValuationCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BreakfixCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RMACount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Day" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SQLInfoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AxMonthlyDatas" EntityType="Self.AxMonthlyData" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SQLInfoAXModelStoreContainer" CdmEntityContainer="SQLInfoDBEntities">
+          <EntitySetMapping Name="AxMonthlyDatas">
+            <EntityTypeMapping TypeName="SQLInfoAXModel.AxMonthlyData">
+              <MappingFragment StoreEntitySet="AxMonthlyData">
+                <ScalarProperty Name="PurchCount" ColumnName="PurchCount" />
+                <ScalarProperty Name="NetAmountInUSD" ColumnName="NetAmountInUSD" />
+                <ScalarProperty Name="AssetCount" ColumnName="AssetCount" />
+                <ScalarProperty Name="AssetValuationCount" ColumnName="AssetValuationCount" />
+                <ScalarProperty Name="BreakfixCount" ColumnName="BreakfixCount" />
+                <ScalarProperty Name="RMACount" ColumnName="RMACount" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
