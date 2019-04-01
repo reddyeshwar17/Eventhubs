@@ -13,7 +13,7 @@ namespace WebAPIDemo1.Controllers
     {
         // GET api/<controller>
         private TrainingDBContext db = new TrainingDBContext();
-
+        [Authorize]
         public IQueryable<PersonalDetail> Get()
         {
             return db.PersonalDetails;
