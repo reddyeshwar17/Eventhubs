@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="myController">
+            a=<input type="number" ng-model="a" value="7" required />
+            b=<input type="number" ng-model="b" value="90" required />
+            <button type="submit" ng-click="Plus()">Add</button>
+            <button type="submit" ng-click="Minus()">Substract</button>
+            <p>: Result(s) is {{MathResult}}</p>
+        </div>
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.service("MyService", function () {
+            this.Add = function (a, b) {
+                return a + b;
+            };
+            this.Substract = function (a, b) {
+                return a - b;
+            };
+        });
+        app.controller("myController", function ($scope, MyService) {
+            $scope.Plus = function () {
+                $scope.MathResult = MyService.Add($scope.a, $scope.b);
+            };
+
+            $scope.Minus = function () {
+                $scope.MathResult = MyService.Substract($scope.a, $scope.b);
+            }
+        })
+    </script>
+</body>
+</html>

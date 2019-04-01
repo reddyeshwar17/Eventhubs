@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("app", []);
+        app.controller("SelectController", function ($scope) {
+
+            $scope.PersonalDetails = [{ FirstName: 'Sheo', LastName: 'Narayan', active: false },
+                          { FirstName: 'Sushmita', LastName: 'Narayan', active: true },
+                          { FirstName: 'Sushant', LastName: 'Shankar' },
+                          { FirstName: 'Sain', LastName: 'Dogvnta', active: true }];
+            $scope.SelectedValue = "";
+        })
+    </script>
+    <div ng-app="app" ng-controller="SelectController">
+        <select ng-model="SelectedValue" ng-options="person.FirstName for person in PersonalDetails"></select>
+        {{SelectedValue}}
+    </div>
+</body>
+</html>

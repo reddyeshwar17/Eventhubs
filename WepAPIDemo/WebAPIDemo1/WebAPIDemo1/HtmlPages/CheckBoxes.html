@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function ($scope) {
+
+            //$scope.getValue = function (item1,item2) {
+            //    $scope.chkval1 = item1;
+            //    $scope.chkval2=item2
+            //}
+        })
+    </script>
+    <div ng-app="myApp" ng-controller="myController">
+        <input type="checkbox" ng-model="chkval1" />
+        <input type="button" value="Submit" ng-click="getValue(chkval1)" />
+        <input type="checkbox" ng-model="chkval2" ng-false-value="'Femal'" ng-true-value="'Male'" />{{chkval2}}
+        <p>{{chkval1}}</p>
+    </div>
+</body>
+</html>

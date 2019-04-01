@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("app", []);
+
+        app.controller("InputController", function ($scope) {
+            $scope.InputValue = "";
+
+            $scope.ValidationError = function (item) {
+                if (item.$dirty && item.$error.required) {
+                    return "This text box is mandatory !";
+                }
+                else {
+                    return "";
+                }
+            };
+        });
+    </script>
+    <div ng-app="app" ng-controller="InputController">
+        <form name="myForm">
+            <input type="text" ng-model="InputValue" name="txtName" ng-minlength="2" ng-maxlength="10" required />
+            <input type="submit" value="submit" />
+            <span ng-show="myForm.txtName.$invalid" style="color:red">{{ValidationError(myForm.txtName)}}</span>
+            <hr />
+            <p>is required: {{myForm.txtName.$error}}</p>
+            <p>Dirty: {{myForm.txtName.$dirty}}</p>
+            <p>is valid? {{myForm.txtName.$invalid}}</p>
+            <p>form valid: {{myForm.$valid}}</p>
+            <p>form error: {{myForm.$error}}</p>
+        </form>
+    </div>
+</body>
+</html>

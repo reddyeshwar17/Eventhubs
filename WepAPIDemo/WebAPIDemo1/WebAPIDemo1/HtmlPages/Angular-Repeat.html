@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var members = [{ user: "Eswar", password: "Reddy", Salary: "8000" },
+            { user: "Devarinti", password: "Reddy", Salary: "9000" }
+        ];
+
+        var app = angular.module("MyApp", []);
+        app.controller("myController", ["$scope", function ($scope) {
+            $scope.Members = members;
+
+            $scope.AddMember = function () {
+                $scope.Members.splice(2, 0, { user: "Mahesh", password: "MahiReddy", Salary: "7000" });
+            };
+
+            $scope.RemoveMember = function (index) {
+                $scope.Members.splice(index, 1);
+            }
+        }]);
+    </script>
+
+    <div ng-app="MyApp" ng-controller="myController">
+        <div>
+            <ul ng-repeat="member in Members | filter: search:exam">
+                <li>{{$index+1}}.{{member.user | uppercase}}, {{member.password | lowercase}}, {{member.Salary|currency:"$"}}</li>
+            </ul>
+        </div>
+        <button type="button" value="Add" ng-click="AddMember()">Add</button>
+        </br>
+        user/password/Salary Search:<input type="text" ng-model="search.$" />
+        user only: <input type="text" ng-model="search.user" />
+        password only: <input type="text" ng-model="search.password" />
+        <input type="checkbox" ng-model="exam" />
+        <input type="text" ng-model="index" />
+        <button type="button" value="Remove" ng-click="RemoveMember(index)">Remove</button>
+    </div>
+</body>
+</html>

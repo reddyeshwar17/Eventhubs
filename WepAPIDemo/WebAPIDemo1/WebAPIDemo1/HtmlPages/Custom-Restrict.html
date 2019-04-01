@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("myController", ["$scope", function ($scope) {
+            $scope.userName = "Eswar";
+            $scope.password = "ReddyDeva";
+        }]);
+        app.directive("custDirective", function () {
+            return {
+                restrict: 'AEC',
+                template: 'Uesr Name:{{userName}}, Password:{{password}}'
+            }
+        })
+    </script>
+    <div ng-app="myApp" ng-controller="myController">
+        <div>Attribute: <span cust-directive></span></div>
+        <div>
+            <span>Element: </span><cust-directive></cust-directive>
+        </div>
+        <div><span>Class: </span><span class="cust-directive"></span></div>
+    </div>
+</body>
+</html>

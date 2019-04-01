@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", ["$scope", function ($scope) {
+            $scope.Square = function () {
+                return 3 * 3;
+            }
+        }]);
+    </script>
+    <div ng-app="myApp" ng-controller="myController">
+        <input type="number" ng-model="txtNumber" />
+        <input type="button" value="Submit" ng-click="Square()" />
+        <p>{{Square()}}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app>
+        <div>
+            <select ng-model="dropdownSelection" ng-init="dropdownSelection = 'select'">
+                <option value="ASP">ASP</option>
+                <option value="CSharp">CSharp</option>
+                <option value="MVC">MVC</option>
+                <option value="JQuery">JQuery</option>
+                <option value="select">select</option>
+            </select>
+        </div>
+        <div ng-switch="dropdownSelection">
+            <spna ng-switch-when="ASP">asp test</spna>
+            <span ng-switch-when="CSharp">CSharp test</span>
+            <span ng-switch-when="MVC">mvc test</span>
+            <span ng-switch-when="JQuery">Jquery test</span>
+            <span ng-switch-default="select">select text</span>
+        </div>
+    </div>
+</body>
+</html>

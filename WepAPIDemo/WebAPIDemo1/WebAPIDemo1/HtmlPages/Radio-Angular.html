@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function ($scope) {
+
+            $scope.SelectedGender = function (val) {
+                $scope.selectedGender = val;
+            }
+        })
+    </script>
+
+    <div ng-app="myApp" ng-init="Gender = 'Male'" ng-controller="myController">
+        <label> <input type="radio" ng-model="Gender" value="Male" ng-change="SelectedGender(Gender)" />Male</label>
+        <br />
+        <label><input type="radio" ng-model="Gender" value="Female" ng-change="SelectedGender(Gender)" />Female</label>
+        <br />
+        {{selectedGender}}
+    </div>
+</body>
+</html>

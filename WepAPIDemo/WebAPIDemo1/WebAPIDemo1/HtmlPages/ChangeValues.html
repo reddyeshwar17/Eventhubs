@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/CustomScripts/LoginScript.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function ($scope) {
+            $scope.TextboxChanged = function (val) {
+                $scope.textboxStatus = val;
+            }
+
+            $scope.CheckboxChanged = function (val) {
+                $scope.checkboxStatus = val;
+            }
+
+            $scope.DropdownChanged = function (val) {
+                $scope.dropdownStatus = val;
+            }
+        })
+    </script>
+    <div ng-app="myApp" ng-controller="myController">
+        <input type="text" ng-model="txtValue" ng-change="TextboxChanged(txtValue)" />
+        </br>
+        <input type="checkbox" ng-model="chkValue" ng-change="CheckboxChanged(chkValue)" />
+        </br>
+        <select ng-model="drpValue" ng-change="DropdownChanged(drpValue)">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        {{textboxStatus}}
+        {{checkboxStatus}}
+        {{dropdownStatus}}
+        <div ng-include="'/HtmlPages/Login.html'"></div>
+    </div>
+
+</body>
+</html>

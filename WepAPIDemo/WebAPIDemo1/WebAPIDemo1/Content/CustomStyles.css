@@ -1,0 +1,21 @@
+﻿#divLoading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #ddffdc;
+    opacity: .8;
+    content: 'Loading...';
+}
+
+.loading {
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    display: block;
+    color: black;
+}

@@ -1,0 +1,13 @@
+﻿.ng-valid {
+    background-color: green;
+    color: white;
+}
+
+.ng-invalid {
+    background-color: red;
+    color: black;
+}
+
+.ng-pristine {
+    background-color: #9c914c;
+}

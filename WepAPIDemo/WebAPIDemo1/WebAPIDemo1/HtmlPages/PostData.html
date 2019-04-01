@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("postDataController", ["$scope", "$http", function ($scope, $http) {
+
+            $scope.SendData = function () {
+                var data = $.param({
+                    fName: $scope.firstName,
+                    lName: $scope.lastName
+                })
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    }
+                }
+
+                $http.post('/test/index', data, config)
+                .then(function (response) {
+                    $scope.postResponse = JSON.stringify(response.data);
+                }, function (response) {
+                    $scope.ErrrorDetails = response.data;
+                })
+                //.then(function (data, status, header, config) {
+                //    $scope.errorDetails = 'Data ' + data + '<br /> status' + status + '<br /> header' + header + '<br />' + config;
+                //})
+            };
+
+        }]);
+    </script>
+    <div ng-app="myApp" ng-controller="postDataController">
+
+        <input type="text" ng-model="firstName" /><br />
+        <input type="text" ng-model="lastName" /><br />
+        <input type="button" ng-click="SendData()" value="Send" />
+        <p>{{postResponse}}, <br />{{ErrrorDetails}}</p> <br />
+    </div>
+</body>
+</html>

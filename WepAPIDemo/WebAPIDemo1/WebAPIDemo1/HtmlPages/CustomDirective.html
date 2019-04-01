@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <script>
+
+        var app = angular.module("myApp", []);
+        app.controller("customDirective", function test($scope) {
+            $scope.Member = [{ user: "Eswar", Password: "Reddy" }, { user: "Devarinti", Password: "Reddy" }];
+           
+            $scope.Employee = [{ user: "Sumithra", Password: "Sumithra" }, { user: "SumiReddy", Password: "ReddySumi" }]
+            $scope.Employees = [{ UserName: "Eswar", Address: "Hyderabad,SEZ" }, { UserName: "SumiReddy", Address: "Hyderabad,Home" }]
+        });
+
+        app.directive("myDetails", function () {
+            return {
+                scope: {
+                    people: '=info'
+                },
+                templateUrl: function (element, attribute) {
+                    return '/HtmlPages/CallInCustomDirective' + attribute.number + '.html'
+                }
+            };
+        })
+    </script>
+    <div ng-app="myApp" ng-controller="customDirective">
+        <my-details info="Member" number="1"></my-details>
+        <my-details info="Employee" number="1"></my-details>
+        <my-details info="Employees" number="2"></my-details>
+        <input type="submit" value="submit" ng-click="Member()" />
+    </div>
+</body>
+</html>
